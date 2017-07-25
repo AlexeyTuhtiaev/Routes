@@ -42,7 +42,7 @@ namespace Routes.Dal.Entities
                     OriginPoint ="Брест, Брестская область, Беларусь",DestinationPoint="Гомель, Гомельская область, Беларусь",
                 Description="Некоторое описание маршрута Брест Некоторое описание маршрута Некоторое описание маршрута ",
                 RoutesMarker=routesMarkers1},
-                new Route { RouteID = 2, RouteEnterTupe = "Simple",TravelType="WALKING",
+                new Route { RouteID = 2, RouteEnterTupe = "Simple",TravelType="DRIVING",
                     OriginPoint ="Гродно, Гродненская область, Беларусь",DestinationPoint="Минск, Беларусь" ,
                 Description="Некоторое описание маршрута Гродно Некоторое описание маршрута Некоторое описание маршрута "},
                 new Route { RouteID = 3, RouteEnterTupe = "Simple",TravelType="WALKING",

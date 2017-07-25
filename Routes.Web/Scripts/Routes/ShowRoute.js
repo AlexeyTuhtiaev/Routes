@@ -28,12 +28,15 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         }));
     }
 
+    var travelModeElement = document.getElementById('travelMode');
+    var travelMode = travelModeElement.getAttribute('value');
+
     directionsService.route({
         origin: document.getElementById('origin-input').value,
         destination: document.getElementById('destination-input').value,
         waypoints: waypts,
         optimizeWaypoints: false,
-        travelMode: 'WALKING'
+        travelMode: travelMode
     }, function (response, status) {
         if (status === 'OK') {
             directionsDisplay.setDirections(response);

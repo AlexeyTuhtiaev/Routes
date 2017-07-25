@@ -14,7 +14,7 @@
         </div>
         <div class="col-md-4">
             <div class="row">
-                <h5 name ="type" value="@Model.TravelType">Способ вашего путешествия: @Model.TravelType</h5>
+                <h5 id ="travelMode" value="@Model.TravelType">Способ вашего путешествия: @Model.TravelType</h5>
             </div>
             <div class="row">
                 <h5>Начало маршрута:</h5>
@@ -29,8 +29,6 @@
                 <div id="way">
                     <div id="wayPointsScope">
                         @{
-
-
                             for (int i = 0; i < Model.WayPoints.Count; i++)
                             {
                                 StringBuilder result = new StringBuilder();
