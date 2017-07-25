@@ -18,7 +18,7 @@ namespace Routes.Dal.Repositories
         /// <param name="name"> имя строки подключения </param>
         public RouteRepository(string name)
         {
-            context = new RoutesContext(name);
+            context = new RoutesContext();
         }
 
         public void Create(Route t)
