@@ -3,13 +3,14 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Routes.Dal.Entities
 {
-   public class RoutesContext : IdentityDbContext<ApplicationUser>
+    public class RoutesContext : IdentityDbContext<ApplicationUser>
     {
         /// <summary>
         /// Конструктор класса
@@ -17,12 +18,12 @@ namespace Routes.Dal.Entities
         ///// <param name="name"> имя строки подключения </param>
         public RoutesContext() : base("RoutesDBConnection")
         {
-             Database.SetInitializer(new RoutesContextInitializer());
+          //  Database.SetInitializer(new RoutesContextInitializer());
         }
         public DbSet<Route> Routes { get; set; }
         public DbSet<RoutesMarker> RoutesMarkers { get; set; }
-
-
+        public DbSet<Photo> Photos { get; set; }
+        
         public static RoutesContext Create()
         {
             return new RoutesContext();
@@ -92,10 +93,24 @@ namespace Routes.Dal.Entities
                 new WayPoint { WayPointID =2, Point ="Могилев, Могилевская область, Беларусь"}
             };
 
+            List<Photo> photos1 = new List<Photo> {
+                new Photo { Image =File.ReadAllBytes(@"d:\LEXA\БГУИР\DP\myDP\DiplomaPaper\DPPhotos\1.jpg"),
+                MimeType="image/jpeg" },
+                new Photo { Image =File.ReadAllBytes(@"d:\LEXA\БГУИР\DP\myDP\DiplomaPaper\DPPhotos\2.jpg"),
+                MimeType="image/jpeg" }
+            };
+
+            List<Photo> photos2 = new List<Photo> {
+                new Photo { Image =File.ReadAllBytes(@"d:\LEXA\БГУИР\DP\myDP\DiplomaPaper\DPPhotos\6.jpg"),
+                MimeType="image/jpeg" },
+                new Photo { Image =File.ReadAllBytes(@"d:\LEXA\БГУИР\DP\myDP\DiplomaPaper\DPPhotos\7.jpg"),
+                MimeType="image/jpeg" }
+            };
+
             List<RoutesMarker> routesMarkers1 = new List<RoutesMarker> {
-                new RoutesMarker {Title="Ресторан", Content ="Описание ресторана",
+                new RoutesMarker {Title="Ресторан", Content ="Описание ресторана",Photos=photos1,
                     GeoLat = "53.917959",GeoLong = "27.596525", Icon="https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png"},
-                new RoutesMarker {Title="Библиотека", Content ="Описание Библиотеки",
+                new RoutesMarker {Title="Библиотека", Content ="Описание Библиотеки",Photos=photos2,
                     GeoLat = "53.930914",GeoLong = "27.645416", Icon="https://maps.google.com/mapfiles/kml/shapes/library_maps.png"}
             };
 

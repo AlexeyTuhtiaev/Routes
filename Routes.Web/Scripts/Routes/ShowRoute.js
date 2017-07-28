@@ -1,4 +1,5 @@
-﻿
+﻿//document.onmousemove= showMarkers;
+
 var map;
 function init() {
 
@@ -64,9 +65,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
         }
     });
-}
 
-showMarkers();//рисую маркеры
+    showMarkers();
+}
 
 function showMarkers() {
     allMarkers = [];
@@ -93,8 +94,13 @@ function showMarkers() {
             marker.setIcon(item.Icon)
 
             // Для каждого объекта добавляем доп. информацию, выводимую в отдельном окне
+            // Appending querystring parameters
+            var url = Router.action('Foo', 'Bar', { hello: 'world' }); // eg. /Foo/Bar?hello=world
+            var strRouteId=''+routeId;
+            var imgUrl = Router.action('Route', 'GetImage', { routeId: strRouteId, markerNumber:i+1});
             var infowindow = new google.maps.InfoWindow({
-                content: "<div class='marker-infoWindow'><h2>"+ item.Content + "</h2></div>"
+                content: "<div class='marker-infoWindow '><h5>" + item.Content +
+                    "</h5><div class='imgwrapper'><img class='img-responsive' src=" + imgUrl + " alt='No Image \\' /></div></div>"
             });
 
             // обработчик нажатия на маркер объекта
@@ -107,5 +113,6 @@ function showMarkers() {
         markerClusterer = new MarkerClusterer(map, allMarkers,
                 { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
     });
+    
 }
 

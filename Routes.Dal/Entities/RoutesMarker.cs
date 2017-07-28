@@ -15,6 +15,8 @@ namespace Routes.Dal.Entities
         public string GeoLong { get; set; }
         public string Icon { get; set; }
 
+        public  List<Photo> Photos { get; set; }
+
         public int RouteID { get; set; }
         public Route Route { get; set; }
     }
